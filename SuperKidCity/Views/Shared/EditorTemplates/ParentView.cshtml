@@ -1,0 +1,58 @@
+﻿@model SuperKidCity.Models.ParentViewModel
+@{
+    string uniqueId = Model.GetType().Name;
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <fieldset>
+            <legend class="text text-capitalize">
+                <span>
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                </span> Stduent Info
+            </legend>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.SchoolId)
+                    <div class="form-group">
+                        <label class="col-md-2 control-label text text-capitalize"> School</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.School, string.Empty, new { @class = "form-control text text-capitalize", @name = uniqueId + ".school", @id = uniqueId + "_school" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RegistrationNumber, new { @class = "col-md-2 control-label text text-capitalize" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control text text-capitalize", @name = uniqueId + ".RegistrationNumber", @id = uniqueId + "_RegistrationNumber" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                @*<button type="submit" class="btn btn-primary">Submit</button>*@
+            </div>
+
+        </fieldset>
+    </div>
+
+    <div class="col-md-6">
+        <fieldset>
+            <legend>
+                <span>
+                    <i class="glyphicon glyphicon-home"></i>
+                </span> Address
+            </legend>
+
+            @Html.EditorFor(m => Model.Member)
+        </fieldset>
+    </div>
+
+</div>
+
+
+

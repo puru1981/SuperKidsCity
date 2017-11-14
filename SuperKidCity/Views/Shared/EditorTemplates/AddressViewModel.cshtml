@@ -1,0 +1,48 @@
+﻿@model SuperKidCity.Models.AddressViewModel
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.StreeetAddress2, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.StreeetAddress2, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Locality, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Locality, Model.Localities, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.District, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.District, Model.Districts, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.State, Model.States, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+    </div>
+
+    @*<button type="submit" class="btn btn-primary">Submit</button>*@
+</div>

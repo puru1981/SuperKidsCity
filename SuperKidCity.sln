@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperKidCity", "SuperKidCity\SuperKidCity.csproj", "{AF098F65-8768-469F-A61B-D2210311777C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperKidCity.Tests", "SuperKidCity.Tests\SuperKidCity.Tests.csproj", "{F39BE760-7E41-44C3-98BD-F3499822ECD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{D978E851-EDAF-4A60-AB23-65CA7B7CBC7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKC.Lib.Core", "Libs\Core\SKC.Lib.Core\SKC.Lib.Core.csproj", "{169FCA68-6E5D-454C-843C-0477953FB73F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKC.Lib.Data", "Libs\Data\SKC.Lib.Data\SKC.Lib.Data.csproj", "{2806DDE2-99E1-4BD8-9D80-B910814980F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKC.Lib.Service", "Libs\Service\SKC.Lib.Service\SKC.Lib.Service.csproj", "{14694410-23AE-4F2F-B038-9FE97B250584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKC.API", "SuperKidCity.Api\SKC.API\SKC.API.csproj", "{1716FAB6-7CAF-43E0-9EA6-E2C07E8D975C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKC.API.Tests", "SKC.API.Tests\SKC.API.Tests.csproj", "{C241EDF6-8AFE-4B44-B608-B37F02405BC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{A589C119-1EA4-4B96-A6A4-943340F8C4BC}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://itonservices.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SuperKidCity.Tests\\SuperKidCity.Tests.csproj
+		SccProjectName1 = SuperKidCity.Tests
+		SccLocalPath1 = SuperKidCity.Tests
+		SccProjectUniqueName2 = SuperKidCity\\SuperKidCity.csproj
+		SccProjectName2 = SuperKidCity
+		SccLocalPath2 = SuperKidCity
+		SccProjectUniqueName3 = Libs\\Core\\SKC.Lib.Core\\SKC.Lib.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = SuperKidCity.sln
+		SccProjectName3 = Libs/Core/SKC.Lib.Core
+		SccLocalPath3 = Libs\\Core\\SKC.Lib.Core
+		SccProjectUniqueName4 = Libs\\Data\\SKC.Lib.Data\\SKC.Lib.Data.csproj
+		SccProjectTopLevelParentUniqueName4 = SuperKidCity.sln
+		SccProjectName4 = Libs/Data/SKC.Lib.Data
+		SccLocalPath4 = Libs\\Data\\SKC.Lib.Data
+		SccProjectUniqueName5 = Libs\\Service\\SKC.Lib.Service\\SKC.Lib.Service.csproj
+		SccProjectTopLevelParentUniqueName5 = SuperKidCity.sln
+		SccProjectName5 = Libs/Service/SKC.Lib.Service
+		SccLocalPath5 = Libs\\Service\\SKC.Lib.Service
+		SccProjectUniqueName6 = SuperKidCity.Api\\SKC.API\\SKC.API.csproj
+		SccProjectName6 = SuperKidCity.Api/SKC.API
+		SccLocalPath6 = SuperKidCity.Api\\SKC.API
+		SccProjectUniqueName7 = SKC.API.Tests\\SKC.API.Tests.csproj
+		SccProjectName7 = SKC.API.Tests
+		SccLocalPath7 = SKC.API.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF098F65-8768-469F-A61B-D2210311777C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF098F65-8768-469F-A61B-D2210311777C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF098F65-8768-469F-A61B-D2210311777C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF098F65-8768-469F-A61B-D2210311777C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39BE760-7E41-44C3-98BD-F3499822ECD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39BE760-7E41-44C3-98BD-F3499822ECD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39BE760-7E41-44C3-98BD-F3499822ECD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39BE760-7E41-44C3-98BD-F3499822ECD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{169FCA68-6E5D-454C-843C-0477953FB73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{169FCA68-6E5D-454C-843C-0477953FB73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{169FCA68-6E5D-454C-843C-0477953FB73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{169FCA68-6E5D-454C-843C-0477953FB73F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2806DDE2-99E1-4BD8-9D80-B910814980F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2806DDE2-99E1-4BD8-9D80-B910814980F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2806DDE2-99E1-4BD8-9D80-B910814980F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2806DDE2-99E1-4BD8-9D80-B910814980F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14694410-23AE-4F2F-B038-9FE97B250584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14694410-23AE-4F2F-B038-9FE97B250584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14694410-23AE-4F2F-B038-9FE97B250584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14694410-23AE-4F2F-B038-9FE97B250584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1716FAB6-7CAF-43E0-9EA6-E2C07E8D975C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1716FAB6-7CAF-43E0-9EA6-E2C07E8D975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1716FAB6-7CAF-43E0-9EA6-E2C07E8D975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1716FAB6-7CAF-43E0-9EA6-E2C07E8D975C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C241EDF6-8AFE-4B44-B608-B37F02405BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C241EDF6-8AFE-4B44-B608-B37F02405BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C241EDF6-8AFE-4B44-B608-B37F02405BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C241EDF6-8AFE-4B44-B608-B37F02405BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{169FCA68-6E5D-454C-843C-0477953FB73F} = {D978E851-EDAF-4A60-AB23-65CA7B7CBC7A}
+		{2806DDE2-99E1-4BD8-9D80-B910814980F0} = {D978E851-EDAF-4A60-AB23-65CA7B7CBC7A}
+		{14694410-23AE-4F2F-B038-9FE97B250584} = {D978E851-EDAF-4A60-AB23-65CA7B7CBC7A}
+	EndGlobalSection
+EndGlobal

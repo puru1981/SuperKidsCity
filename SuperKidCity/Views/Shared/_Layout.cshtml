@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=satisfy" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Super Kids City</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+    <style>
+        .loadinggif {
+            background: url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
+        }
+
+        /*sub {
+            font-size: 52% !important;
+        }
+
+        .pad-bottom {
+            padding-top: 42px !important;
+        }
+
+        .text {
+            font-family: 'Satisfy', cursive;
+            color: black;
+            font-size: x-large;
+        }
+
+        h2.text {
+            font-size: xx-large;
+            color: red;
+        }
+
+        #loginLink {
+            font-family: 'Satisfy', cursive;
+            font-size: large;
+        }
+
+        .dropdown-toggle {
+            font-family: 'Satisfy', serif;
+            color: inherit;
+            font-size: large;
+        }
+
+        a.text {
+            font-family: 'Satisfy', serif;
+            color: inherit;
+            font-size: large;
+        }
+
+        .text-danger {
+            color: #d9534f !important;
+        }*/
+
+        /*.btn {
+                    font-family: 'Gloria Hallelujah', serif;
+                }*/
+
+        /*.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+                    color: #6c9794;
+                }*/
+
+        /*.carousel-inner > .active {
+            left: 0;
+            height: 500px;
+        }
+
+        .caret-up {
+            width: 0;
+            height: 0;
+            border-left: 4px solid rgba(0, 0, 0, 0);
+            border-right: 4px solid rgba(0, 0, 0, 0);
+            border-bottom: 4px solid;
+            display: inline-block;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        .mynavbar {
+            text-align: center;
+        }
+
+            .mynavbar .nav {
+                float: none;
+            }
+
+                .mynavbar .nav li {
+                    display: inline-block;
+                    float: none;
+                    margin: 0 20px;
+                    vertical-align: middle;
+                }
+
+                    .mynavbar .nav li a {
+                        border-radius: 10px;
+                        background: inherit;
+                        width: auto;
+                        height: auto;
+                        vertical-align: middle;
+                        display: inline-block;
+                    }
+
+                        .mynavbar .nav li a:hover {
+                            color: orange;
+                        }
+
+                    .mynavbar .nav li a {
+                        border-radius: 0;
+                        display: block;
+                        border-bottom: 1px solid #fff;
+                    }
+
+        .navbar-nav {
+            margin-top: -73px;
+        }
+
+            .navbar-nav.navbar-right:last-child {
+                margin-right: -15px;
+                margin-top: -4px;
+            }
+
+        .text-objective {
+            color: #8becfc !important;
+        }
+
+         .text-objective-header {
+            color: #fbf2f2 !important;
+        }
+
+         .text-misison{
+             color: #17426d !important;
+         }
+
+
+
+        .box {
+            width: 50%;
+            height: 400px;
+            background: #FFF;
+            margin: 40px auto;
+        }
+
+        .box-dir-msg {
+            width: 100%;
+            height: auto;
+            background: #FFF;
+            margin: 40px auto;
+        }
+
+        .effect6 {
+            position: relative;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+            .effect6:before, .effect6:after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+                -moz-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+                box-shadow: 0 0 20px rgba(0,0,0,0.8);
+                top: 50%;
+                bottom: 0;
+                left: 10px;
+                right: 10px;
+                -moz-border-radius: 100px / 10px;
+                border-radius: 100px / 10px;
+            }
+
+            .effect6:after {
+                right: 10px;
+                left: auto;
+                -webkit-transform: skew(8deg) rotate(3deg);
+                -moz-transform: skew(8deg) rotate(3deg);
+                -ms-transform: skew(8deg) rotate(3deg);
+                -o-transform: skew(8deg) rotate(3deg);
+                transform: skew(8deg) rotate(3deg);
+            }*/
+    </style>
+</head>
+
+<body>
+    <div class="outerbox">
+        <div class="container">
+            <div class="whtbx">
+                <div class="headerbx">
+
+                    <div class="col-lg-9" style="margin-bottom: 33px;">
+                        <div class="row">
+                            <a class="" href="/Home/"><img src="~/Content/images/logo.png" class="img-responsive"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-right">
+                        <div class="row">
+                            <div class="lgnbx">
+                                
+                                <a href="@Url.Action("Login", "Account")" class="login-btn"><i class="fa fa-key"></i> Login</a><a href="@Url.Action("Register", "Account")" id="registerLink" " class=" registr-btn"><i class="fa fa-pencil-square"></i> Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="clearfix"></div>
+                    <!-- Navigation -->
+                    <nav class="navbar navbar-inverse" role="navigation" style="margin-top:40px;">
+                        <div class="clearfix"></div>
+                        <div class="navbg row">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li> <a class="active" href="@Url.Action("Index","Home")" style="background:#ee257c; text-align:center;"><i class="fa fa-home fa-2x"></i><br>Home</a> </li>
+                                    <li> <a href="@Url.Action("About","Home")" style="background:#e89e00; text-align:center;"><i class="fa fa-pencil fa-2x"></i><br>About Us</a> </li>
+                                    <li> <a href="@Url.Action("Profile","Home")" style="background:#08509a; text-align:center;"><i class="fa fa-book fa-2x"></i><br>Profile</a> </li>
+                                    <li> <a href="@Url.Action("CommingSoon","Home")" style="background:#75bc15; text-align:center;"><i class="fa fa-comments fa-2x"></i><br>Testimonials</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background:#cf6021; text-align:center;"><i class="fa fa-bullhorn fa-2x"></i><br>Creative <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a href="@Url.Action("Parent","Home")">Parents</a> </li>
+                                            <li> <a href="@Url.Action("School","Home")">School</a> </li>
+                                        </ul>
+                                    </li>
+                                    <li> <a href="@Url.Action("Product","Home")" style="background:#079b34; text-align:center;"><i class="fa fa-cubes fa-2x"></i><br>Products</a></li>
+                                    <li> <a href="@Url.Action("FAQ","Home")" style="background:#6b3385; text-align:center;"><i class="fa fa-question fa-2x"></i><br>FAQ</a></li>
+                                    <li> <a href="@Url.Action("Contact","Home")" style="background:#000; text-align:center;"><i class="fa fa-mobile fa-2x"></i><br>Contact</a> </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                    </nav>
+
+                    <div class="clearfix"></div>
+                </div>
+                @RenderBody()
+                <section>
+                    <img src="/Content/images/ftrbg.png" class="img-responsive">
+                    <div class="footer">
+                        © copyrights. superkidscity.com. All Right Reserved.
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $("#headertext").hover(function () {
+            $("#headertext").css("color", "#dddddd");
+        });
+        $(function () {
+            $(".dropdown").hover(
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
+                        $(this).toggleClass('open');
+                        $('b', this).toggleClass("caret caret-up");
+                    },
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).fadeOut("fast");
+                        $(this).toggleClass('open');
+                        $('b', this).toggleClass("caret caret-up");
+                    });
+        });
+
+    </script>
+</body>
+</html>

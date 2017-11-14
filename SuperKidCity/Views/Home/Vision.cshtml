@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Vision";
+    Layout = ViewBag.Layout;
+    string headerCssClass = "";
+    string textCssClass = "";
+    
+    if(string.IsNullOrEmpty(Layout))
+    {
+        headerCssClass = "text-objective-header";
+        textCssClass = " text-objective";
+    }
+}
+<br />
+<fieldset>
+    <legend class="text text-capitalize text-center">
+        <h2 class="text text-capitalize @headerCssClass">
+            Objective
+        </h2>
+    </legend>
+    <p class="text text-capitalize text-center">
+        <section class="text text-left @textCssClass">
+            Our vision is to ensure peace of mind to parents particularly working parents, who are always worried about the safety of their kids in school, while they are at work. This affects parents health and career both.
+        </section>
+    </p>
+</fieldset>
+

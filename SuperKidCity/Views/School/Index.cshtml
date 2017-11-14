@@ -1,0 +1,123 @@
+﻿@model SuperKidCity.Models.SchoolViewModel
+
+@{
+    Layout = "~/Views/Shared/_SchoolLayout.cshtml";
+    ViewBag.Title = "School Home";
+    string Salutation = Model.Principal.Gender == SKC.Lib.Core.Models.Gender.Male ? "Mr." : "Ms/Mrs.";
+}
+<div class="text text-capitalize text-center center-block">
+    <h2 class="text text-capitalize">
+        <span>
+            <i class="glyphicon glyphicon-list"></i>
+        </span>@ViewBag.Title.
+    </h2>
+</div>
+
+<div class="jumbotron">
+    <fieldset>
+        <legend class="text-capitalize text-left">
+
+            <span>
+                <i class="glyphicon glyphicon-barcode" title="@Model.RegistrationNumber"></i>
+            </span>  @Model.Name
+        </legend>
+
+        <div class="panel-body">
+
+            @if (Model.Address != null && !string.IsNullOrEmpty(Model.Address.StreeetAddress2))
+            {
+                <div class="row">
+                    <div class="col-md-2">
+                        <fieldset>
+                            <legend class="text-capitalize text-left">
+                                <span>
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                </span>  Established
+                            </legend>
+                            <div>
+                                <span style="font-size:xx-large; font:400">
+                                    @Model.EstablishedAt.ToString("MMM")
+                                </span>
+                                <span style="font-size:larger;color:darkblue; font:600">
+                                    @Model.EstablishedAt.ToString("yyyy")
+                                </span>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="col-md-4">
+                        <fieldset>
+                            <legend class="text-capitalize text-left">
+                                <span>
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>  Address
+                            </legend>
+                            <address>
+                                @Model.Address.StreetAddress, @Model.Address.StreeetAddress2
+                                <br />
+                                @Model.Address.Locality - @Model.Address.District <br /> [@Model.Address.State]
+                            </address>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend class="text-capitalize text-left">
+                                <span>
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>  Principal
+                            </legend>
+                            @if (Model.Principal != null && !string.IsNullOrEmpty(Model.Principal.Name))
+                            {
+                                <address>
+                                    @Salutation @Model.Principal.Name <br />
+                                    <email title="Email Address">
+                                        <span>
+                                            <i class="glyphicon glyphicon-envelope"></i>
+                                        </span> @Model.Principal.Contact.Email
+                                    </email>  <br />
+                                    <phone title="Phone Number">
+                                        <span>
+                                            <i class="glyphicon glyphicon-phone-alt"></i>
+                                        </span>  @Model.Principal.Contact.Number
+                                    </phone>
+                                </address>
+                            }
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend class="text-capitalize text-left">
+                                <span>
+                                    <i class="glyphicon glyphicon-phone"></i>
+                                </span>  Contact Info
+                            </legend>
+                            @if (Model.ContactPerson != null && !string.IsNullOrEmpty(Model.ContactPerson.Name))
+                            {
+                                Salutation = Model.ContactPerson.Gender == SKC.Lib.Core.Models.Gender.Male ? "Mr." : "Mrs";
+                                <address>
+                                    @Salutation @Model.ContactPerson.Name <br />
+                                    <email title="Email Address">
+                                        <span>
+                                            <i class="glyphicon glyphicon-envelope"></i>
+                                        </span> @Model.ContactPerson.Contact.Email
+                                    </email>  <br />
+                                    <phone title="Phone Number">
+                                        <span>
+                                            <i class="glyphicon glyphicon-phone-alt"></i>
+                                        </span>  @Model.ContactPerson.Contact.Number
+                                    </phone>
+                                </address>
+                            }
+                        </fieldset>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </fieldset>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

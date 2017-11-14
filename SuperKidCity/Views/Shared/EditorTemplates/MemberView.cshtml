@@ -1,0 +1,34 @@
+﻿@model SuperKidCity.Models.MemberViewModel
+@{
+    string uniqueId = Model.Type.ToString();
+}
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control text text-capitalize" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label text text-capitalize" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(x => x.Gender, new { @class = "form-control dropdown" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group hidden">
+            @Html.HiddenFor(m => m.Type)
+        </div>
+    </div>
+    @*<button type="submit" class="btn btn-primary">Submit</button>*@
+
+    @Html.EditorFor(m => Model.Contact)
+</div>

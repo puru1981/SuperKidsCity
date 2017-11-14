@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<section style="margin:0 2em;">
+    <div class="col-lg-12 text-center">
+        <div style="background:#ddd; padding:20px; margin-bottom:40px;">
+            <h2 style="margin-top:0; margin-bottom:20px;">Contact</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home/">Home</a></li>
+                <li class="breadcrumb-item active">Contact</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section style="margin:3em 2em;">
+    <div class="col-lg-8">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14003.640158202463!2d77.13254513199807!3d28.66241216849437!2m3!1f0!2f0!3f0!3m2!1i1024!2i800!4f13.1!3m3!1m2!1s0x390d03a82a7f292f%3A0xbcc68f88cda9923e!2sMoti+Nagar%2C+New+Delhi%2C+Delhi!5e0!3m2!1sen!2sin!4v1490349379974" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="whitebox" style="background:#ee257c;">
+            <h4>Get in Touch</h4>
+            <p><i class="fa fa-map-marker"></i> Address: <br>6/3A, Moti Nagar, New Delhi- 110015</p>
+            <p><i class="fa fa-phone"></i> Call:<br> 9810204094, 9811350539</p>
+            <p><img src="~/Content/images/whatsapp-icn.png" width="20" height="20"> Whatsapp:<br> 9810204094,9811350539</p>
+            <p><i class="fa fa-at"></i> Website: <br><a href="#" style="color:#ffc3dd;">www.superkidscity.com</a></p>
+            <p><i class="fa fa-envelope"></i> Email: <br><a href="mailto:info@superkidscity.com" style="color:#ffc3dd;">info@superkidscity.com</a></p>
+        </div>
+    </div>
+
+</section>
+
+@*<div class="jumbotron">
+    <fieldset>
+        <legend>
+            <h2 class="text text-capitalize">@ViewBag.Title.</h2>
+        </legend>
+
+        <h3 class="text text-capitalize">@ViewBag.Message</h3>
+
+        <address class="text text-capitalize">
+            One Microsoft Way<br />
+            Redmond, WA 98052-6399<br />
+            <abbr title="Phone">P:</abbr>
+            425.555.0100
+        </address>
+
+        <address class="text text-capitalize">
+            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        </address>
+    </fieldset>
+   
+</div>*@
+
+<div class="jumbotron">
+    @*<p>Feed from Camare 192.168.0.253</p>*@
+    @*<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+            codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+            width="640" height="480" id="vlc" events="True">
+        <param name="Src" value="rtsp://cameraipaddress" />
+        <param name="ShowDisplay" value="True" />
+        <param name="AutoLoop" value="False" />
+        <param name="AutoPlay" value="True" />
+        <embed id="vlcEmb" type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="640" height="480"
+               target="rtsp://192.168.0.253"></embed>
+    </object>*@
+
+    <!--- BEGIN PLAYER --->
+    <!-- webbot bot="HTMLMarkup" startspan ---->
+
+    @*<object id="MediaPlayer" width="320" height="270" classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components..." type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
+
+        <param name="autoStart" value="True">
+
+        <param name="filename" value="rtsp://192.168.0.253">
+
+        <param name="ShowControls" value="False">
+
+        <param name="ShowStatusBar" value="False">
+
+        <embed type="" src="rtsp://192.168.0.253" name="MediaPlayer" width="320" height="270" autostart="1" showcontrols="0"></embed>
+    </object>*@
+
+    <!-- webbot bot="HTMLMarkup" endspan ---->
+    <!--- end PLAYER --->
+</div>

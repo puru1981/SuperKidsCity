@@ -1,0 +1,163 @@
+﻿@model SuperKidCity.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Advance Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/jquery.ui.css" rel="stylesheet" />
+<br />
+<fieldset>
+    <legend class="text-capitalize text-center center-block">
+        <h4 class="text-capitalize text-center">
+            <i class="glyphicon glyphicon-search"></i>  @ViewBag.Title
+        </h4>
+    </legend>
+    <div class="jumbotron">
+        @using (Html.BeginForm("GetSchool", "Search", FormMethod.Post, new { @id = "advSearchForm", @class = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.SchoolId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SchoolId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SchoolId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Search By School", @id = "schooltxt" } })
+                        @Html.ValidationMessageFor(model => model.SchoolId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LocalityId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.LocalityId, new List<SelectListItem>() { new SelectListItem() { Text = "Search By Locality", Value = "0" } }, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LocalityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.StateId, Model.States, new { @class = "form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.SchoolId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-capitalize text-center">
+                            <i class="glyphicon glyphicon-search"></i> Facilities
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        @for (int index = 0; index < Model.Facilities.ToList().Count; index++)
+                        {
+                            @Html.Hidden("[" + index + "].GroupId", Model.Facilities.ToList()[index].GroupId)
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend class="text-capitalize text-left">
+                                        @Html.Label(Model.Facilities.ToList()[index].GroupName, htmlAttributes: new { @class = "control-label col-md-2 text-capitalize text-center facility-lable" })
+                                    </legend>
+                                    <hr />
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => Model.Facilities.ToList()[index].Members)
+                                    </div>
+                                </fieldset>
+
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-0 col-md-3">
+                                <input type="submit" value="Search" class="btn btn-default" />
+                            </div>
+                            <div class="col-md-offset-2 col-md-3">
+                                @Html.ActionLink("Back to Home", "Index", "Home", new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        }
+
+    </div>
+</fieldset>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+            integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#SchoolId").val('0');
+            $("#StateId").change(function () {
+                $("#LocalityId").addClass('loadinggif');
+                $.ajax({
+                    url: '@Url.Action("GetByState","Locality")',
+                    data: { stateId: $("#StateId").val() },
+                    type: "GET",
+                    success: function (data) {
+                        $("#LocalityId").removeClass('loadinggif');
+                        //var dropdown = document.createElement('select');
+                        //dropdown.className = "form-control";
+                        //dropdown.id = "LocalityId";
+
+                        //$("#LocalityId").replaceWith(dropdown);
+                        $.each(data, function (index, item) {
+                            $("#LocalityId").append('<option value="'
+                                                      + item.value + '">'
+                                                      + item.name + '</option>');
+                        });
+                    },
+                    error: function () {
+                        $("#LocalityId").removeClass('loadinggif');
+                        alert("Error retreiving data");
+                    }
+                });
+
+            });
+
+            $("#schooltxt").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/AutoComplete/schools",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Name, value: item.Id };
+                            }))
+
+                        },
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                },
+                select: function (event, ui) {
+                    $("#schooltxt").val(ui.item.label);
+                    $("#SchoolId").val(ui.item.value);
+                    return false;
+                },
+            });
+        });
+    </script>
+}

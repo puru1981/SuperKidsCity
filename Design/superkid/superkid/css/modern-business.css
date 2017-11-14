@@ -1,0 +1,116 @@
+/*!
+ * Start Bootstrap - Modern Business (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    /*padding-top: 50px;*/ /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles *
+/
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+    margin: 50px 0;
+}
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+	.navbg{background:#000;}
+}
+
+@media(max-width:800px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+	.lgnbx{margin:25px 0 !important; display:block; text-align:center;}
+}
+
+.lgnbx{margin-top:37px;}
+.login-btn{background:#134576; padding:10px 15px; text-transform:uppercase; color:#fff;}
+.login-btn:hover{text-decoration:none; color:#fff;}
+.registr-btn{background:#ef4f99; padding:10px 15px; text-transform:uppercase; color:#fff;}
+.registr-btn:hover{text-decoration:none; color:#fff;}
+.box1{background:#cf6021 url(../images/bg2.png); padding:30px; color:#fff;}
+.box2{background:#8becfc url(../images/bg3.png) bottom; padding:30px;}
+.outerbox{margin-top:40px;}
+.whtbx{background:#fff url(../images/bg4.png) repeat;}
+.headerbx{padding:3em;}
+.footer{background:#222; padding:10px; text-align:center; color:#fff;}
+.whitebox{padding:30px; color:#fff;}
+.morebtn{border:solid #fff 1px; padding:5px 10px; color:#fff;}
+.morebtn:hover{background:#fff; color:#000; text-decoration:none;}
+.bxh{min-height:480px;}
+.lisps li{margin-bottom:10px;}
+
+
+

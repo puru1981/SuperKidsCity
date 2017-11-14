@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SuperKidCity.Models.StateViewModel>
+
+@{
+    ViewBag.Title = "State";
+}
+<br />
+<br />
+@if (!ViewBag.Success)
+{
+    <p class="text-capitalize text-center text-danger">
+        @ViewBag.Msg
+    </p>
+}
+else
+{
+    <fieldset>
+        <legend class="text-capitalize text-center">
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-sm btn-default" })
+                </div>
+                <div class="col-md-2 pull-left">
+                    States
+                </div>
+            </div>
+
+        </legend>
+
+    </fieldset>
+
+
+    <table class="table table-condensed panel panel-primary">
+        <thead class="panel-heading">
+            <tr>
+                <th class="text-capitalize text-center">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayName("Cities")
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+        </thead>
+        <tbody class="panel-body">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-capitalize text-center">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+
+                    <td class="col-md-4">
+                        <table>
+                            <tr>
+
+                                <td>
+                                    @Html.ActionLink("Add New", "Create", "City", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
+                                    @Html.ActionLink(item.Cities.ToList().Count.ToString(), "Index", "City", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @title = item.Cities.ToList().Count.ToString() + " Cities" })
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td class="col-md-4">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <p class="text-capitalize text-left">
+                        <i class="glyphicon glyphicon-info-sign"></i> @Model.ToList().Count Records
+                    </p>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+}

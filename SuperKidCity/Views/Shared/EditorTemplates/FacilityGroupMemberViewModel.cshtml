@@ -1,0 +1,125 @@
+﻿@model IEnumerable<SuperKidCity.Models.FacilityGroupMemberViewModel>
+@{
+    string controlDOMName = string.Empty;
+}
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-10">
+            @for (int index = 0; index < Model.OrderBy(m => m.Type).ToList().Count; index++)
+            {
+                controlDOMName = string.Format("{0}_{1}_{2}", Model.OrderBy(m => m.Type).ToList()[index].GroupId, Model.OrderBy(m => m.Type).ToList()[index].Id, Model.OrderBy(m => m.Type).ToList()[index].Name);
+                if (Model.OrderBy(m => m.Type).ToList()[index].Name != "Other")
+                {
+                    <div class="col-md-6" id="groupd_@Model.OrderBy(m => m.Type).ToList()[index].GroupId">
+                        <label class="col-md-6 control-label text text-capitalize">
+                            @Model.OrderBy(m => m.Type).ToList()[index].Name
+                        </label>
+
+                        @switch (Model.OrderBy(m => m.Type).ToList()[index].Type)
+                        {
+                            case SKC.Lib.Core.Models.FacilityGroupMemberType.Checkbox:
+                        <div class="col-md-4 form-group">
+                            <input type="checkbox" class="checkbox-inline"
+                                   data-groupid="@Model.OrderBy(m => m.Type).ToList()[index].GroupId"
+                                   data-schoolid="@Model.OrderBy(m => m.Type).ToList()[index].SchoolId"
+                                   data-guid="@Model.OrderBy(m => m.Type).ToList()[index].GUID"
+                                   data-name="@Model.OrderBy(m => m.Type).ToList()[index].Name"
+                                   data-type="@Model.OrderBy(m => m.Type).ToList()[index].Type"
+                                   data-valuetype="@Model.OrderBy(m => m.Type).ToList()[index].ValueType"
+                                   data-memberid="@Model.OrderBy(m => m.Type).ToList()[index].Id"
+                                   data-required="@Model.OrderBy(m => m.Type).ToList()[index].Required"
+                                   name="@controlDOMName"
+                                   id="@controlDOMName" onclick="toggleCheckboxState('@controlDOMName')" checked="@Model.OrderBy(m => m.Type).ToList()[index].Options" />
+                        </div>
+                                break;
+
+                            case SKC.Lib.Core.Models.FacilityGroupMemberType.Textbox:
+                                if (Model.OrderBy(m => m.Type).ToList()[index].ValueType == "integer")
+                                {
+                        <div class="col-md-4 form-group">
+                            @Html.Editor(controlDOMName, Model.OrderBy(m => m.Type).ToList()[index].Name, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @id = controlDOMName,
+                                           @class = "form-control text text-capitalize",
+                                           @required = Model.OrderBy(m => m.Type).ToList()[index].Required ? "required" : "",
+                                           @type = "number",
+                                           @maxLength = "3",
+                                           @min = "0",
+                                           @value="0",
+                                           @style = "width:80px;",
+                                           @data_groupid = Model.OrderBy(m => m.Type).ToList()[index].GroupId,
+                                           @data_schoolid = Model.OrderBy(m => m.Type).ToList()[index].SchoolId,
+                                           @data_guid = Model.OrderBy(m => m.Type).ToList()[index].GUID,
+                                           @data_name = Model.OrderBy(m => m.Type).ToList()[index].Name,
+                                           @data_type = Model.OrderBy(m => m.Type).ToList()[index].Type,
+                                           @data_valuetype = Model.OrderBy(m => m.Type).ToList()[index].ValueType,
+                                           @data_memberId = Model.OrderBy(m => m.Type).ToList()[index].Id,
+                                           @data_required=Model.OrderBy(m => m.Type).ToList()[index].Required
+                                       }
+                                   })
+                        </div>
+                                }
+                                else
+                                {
+                        <div class="col-md-4 form-group">
+                            @Html.Editor(controlDOMName, Model.OrderBy(m => m.Type).ToList()[index].Name, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @id = controlDOMName,
+                                           @class = "form-control text text-capitalize",
+                                           @placeholder=string.Format("Input {0}",Model.OrderBy(m => m.Type).ToList()[index].Name),
+                                           @required = Model.OrderBy(m => m.Type).ToList()[index].Required ? "required" : "",
+                                           @data_groupid = Model.OrderBy(m => m.Type).ToList()[index].GroupId,
+                                           @data_schoolid = Model.OrderBy(m => m.Type).ToList()[index].SchoolId,
+                                           @data_guid = Model.OrderBy(m => m.Type).ToList()[index].GUID,
+                                           @data_name = Model.OrderBy(m => m.Type).ToList()[index].Name,
+                                           @data_type = Model.OrderBy(m => m.Type).ToList()[index].Type,
+                                           @data_valuetype = Model.OrderBy(m => m.Type).ToList()[index].ValueType,
+                                           @data_memberId = Model.OrderBy(m => m.Type).ToList()[index].Id,
+                                           @data_required = Model.OrderBy(m => m.Type).ToList()[index].Required
+                                       }
+                                   })
+                        </div>
+                                }
+                                break;
+
+                            case SKC.Lib.Core.Models.FacilityGroupMemberType.TextArea:
+                                break;
+
+                            case SKC.Lib.Core.Models.FacilityGroupMemberType.Radio:
+                                break;
+
+                            case SKC.Lib.Core.Models.FacilityGroupMemberType.Dropdown:
+                        <div class="col-md-3 form-group">
+                            @Html.DropDownList(controlDOMName, new List<SelectListItem>() { new SelectListItem() { Text = "Male", Value = "0" },
+                               new SelectListItem() { Text = "Female", Value = "1" }, new SelectListItem() { Text = "Other", Value = "2" } },
+                               new
+                               {
+                                   @class = "form-control dropdown valid",
+                                   @id = controlDOMName,
+                                   @data_groupid = Model.OrderBy(m => m.Type).ToList()[index].GroupId,
+                                   @data_schoolid = Model.OrderBy(m => m.Type).ToList()[index].SchoolId,
+                                   @data_guid = Model.OrderBy(m => m.Type).ToList()[index].GUID,
+                                   @data_name = Model.OrderBy(m => m.Type).ToList()[index].Name,
+                                   @data_type = Model.OrderBy(m => m.Type).ToList()[index].Type,
+                                   @data_valuetype = Model.OrderBy(m => m.Type).ToList()[index].ValueType,
+                                   @data_memberId = Model.OrderBy(m => m.Type).ToList()[index].Id,
+                                   @data_required = Model.OrderBy(m => m.Type).ToList()[index].Required
+                               })
+
+                        </div>
+
+                                break;
+
+                            default:
+                                break;
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

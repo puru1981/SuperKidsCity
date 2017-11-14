@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/jquery.ui.css" rel="stylesheet" />
+
+
+<section>
+    @Html.Partial("_carouselPartial")
+
+    @Html.Action("Index", "Search")
+</section>
+<div class="clearfix"></div>
+<section style="margin:3em 2em;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-lg-4">
+                <div class="whitebox" style="background:#00cbcb;">
+                    <h4>What We Offer</h4>
+                    <a class="fancybox-buttons" data-fancybox-group="button" href="~/Content/images/what-we-offer.jpg"><img src="~/Content/images/what-we-offer.jpg" class="img-responsive"></a><br>
+                    <p>In today's world technology has breached the boundaries of limitation and using technologies businesses are leveraging every opportunity to flourish like never it before. In fact Technology too has been driven to cater the need of business requirement and uplifted itself to cop up. </p>
+                    <br><br>
+                    <a href="products.html" class="morebtn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="whitebox" style="background:#dd3731;">
+                    <h4>How We Are Different</h4>
+                    <a class="fancybox-buttons" data-fancybox-group="button" href="~/Content/images/how-we-are.jpg"><img src="~/Content/images/how-we-are.jpg" class="img-responsive"></a><br>
+                    <p>The existing solutions do not provide complete cover of security of child the moment he or she steps inside the school transport or school campus till the child comes back home. Our solution is very simple to operate. Even the non-techno savvy parents can track their kin on mobiles.</p>
+                    <br>
+                    <a href="products.html" class="morebtn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="whitebox" style="background:#eeac04;">
+                    <h4>How It Works</h4>
+                    <a class="fancybox-buttons" data-fancybox-group="button" href="~/Content/images/how.jpg"><img src="~/Content/images/how-it-works.jpg" class="img-responsive"></a><br>
+                    <p>
+                        SMS alerts once child reaches school and leaves and  Live streaming video of the school through an app.<br><br>
+                        The information is shared only to the intended users after passing through stringent authorization norms. Please click on the photo to see the details.
+                    </p>
+                    <br>
+                    <a href="products.html" class="morebtn">Read More</a>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+
+</section>
+<div class="clearfix"></div>
+<section style="margin:3em 2em;">
+    <div class="col-lg-8">
+        <div class="whitebox" style="background:#ee257c;">
+            <h4>Chairman's Message</h4>
+            <div class="col-lg-12">
+                <div class="row">
+                    <img src="~/Content/images/chairman.jpg" class="pull-left" style="margin-right:15px;">
+                    <p><em>"Suresh Chandra Srivastava: An IIT Alumnus. Worked for 34 years in Corporate Sector. The ugly incidents of small kids being kidnapped, harassed and tortured in schools, in recent months, have shaken his thought process. He has  tried to find a solution for the parents of small children which is before you in the form of  Superkids City."</em></p>
+                </div>
+            </div>
+            <p>
+                Dear Parents,<br>
+                As soon as the child becomes 3 or 4 year old, every parent gets anxious as to which School they should send their child. The foremost concern in the mind of each parent is the safety and security of their child in the School. Every now and then all of us hear about the child abuse not only at School premises but also in the School buses. News about the child drawn in the swimming pool or in the septic tank of the School also frightens the parents. It  brings fear not only in the minds of parents but also in the child. This has an ever lasting impact on the over-all development of the child. By remaining in constant fear, the child can loose confidence and suffer disassociation, anxiety, difficulty in concentration and therefore, may not be able to develop properly.  Every child has a right for a safe childhood.
+            </p>
+            <br>
+            <img src="~/Content/images/kid1.png" class="pull-left" style="margin-right:15px;">
+            <p>It is not possible for the School to keep an eye on each child. Every child is precious for the parents and the country as well.  When the child goes to School, the parents remain worried till the child comes home safely.<br><br> This can also have a bad effect on the mental health of the parents as well.  Due to constant anxiety, the parents may not concentrate on their work.</p><br><br><br><br><br>
+            <img src="~/Content/images/kid2.png" class="pull-left" style="margin-right:15px;">
+            <p>In order to overcome this problem, we have developed a technology which enables parents to keep an eye on their child not only in the School premises but also while the child is travelling in the School Bus. Besides this, they will receive regular messages as and when the child enters into the School bus and also when he enters into the gate of the School. Similarly, they will get the messages when the child leaves School and gets into the bus. They can watch the live broadcast of the happenings around their child on their phones/computer.</p>
+            <!-- <a href="profile.html" class="morebtn">Read More</a>-->
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="whitebox" style="background:#08509a; min-height:457px;">
+            <h4>Get in Touch</h4>
+            <p><i class="fa fa-map-marker"></i> Address: <br>6/3A, Moti Nagar, New Delhi- 110015</p>
+            <p><i class="fa fa-phone"></i> Call:<br> 9810204094, 9811350539</p>
+            <p><img src="/Content/images/whatsapp-icn.png" width="20" height="20"> Whatsapp:<br> 9810204094,9811350539</p>
+            <p><i class="fa fa-at"></i> Website: <br><a href="#" style="color:#ffc3dd;">www.superkidscity.com</a></p>
+            <p><i class="fa fa-envelope"></i> Email: <br><a href="mailto:info@superkidscity.com" style="color:#ffc3dd;">info@superkidscity.com</a></p>
+        </div>
+
+    </div>
+
+</section>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+            integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#SchoolId").val('0');
+            $("#StateId").change(function () {
+                $("#LocalityId").addClass('loadinggif');
+                $.ajax({
+                    url: '@Url.Action("GetByState","Locality")',
+                    data: { stateId: $("#StateId").val() },
+                    type: "GET",
+                    success: function (data) {
+                        $("#LocalityId").removeClass('loadinggif');
+                        //var dropdown = document.createElement('select');
+                        //dropdown.className = "form-control";
+                        //dropdown.id = "LocalityId";
+
+                        //$("#LocalityId").replaceWith(dropdown);
+                        $.each(data, function (index, item) {
+                            $("#LocalityId").append('<option value="'
+                                                      + item.value + '">'
+                                                      + item.name + '</option>');
+                        });
+                    },
+                    error: function () {
+                        $("#LocalityId").removeClass('loadinggif');
+                        alert("Error retreiving data");
+                    }
+                });
+
+            });
+
+            $("#schooltxt").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/AutoComplete/schools",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Name, value: item.Id };
+                            }))
+
+                        },
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                },
+                select: function (event, ui) {
+                    $("#schooltxt").val(ui.item.label);
+                    $("#SchoolId").val(ui.item.value);
+                    return false;
+                },
+            });
+        });
+    </script>
+}

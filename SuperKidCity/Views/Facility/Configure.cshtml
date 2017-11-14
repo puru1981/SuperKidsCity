@@ -1,0 +1,141 @@
+﻿@model IEnumerable<SuperKidCity.Models.FacilityGroupViewModel>
+
+@{
+    ViewBag.Title = "Configure Facilities";
+    Layout = "~/Views/Shared/_SchoolLayout.cshtml";
+    int schoolId = ViewBag.SchoolId;
+}
+
+<br />
+<br />
+<fieldset>
+
+    <legend class="text-capitalize text-center">
+        Configure Facilities
+    </legend>
+
+    @using (Html.BeginForm("Configure", "Facility", FormMethod.Post, new { @role = "form", @class = "form-horizontal", @id = "configureFacilitiesForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.Hidden(schoolId.ToString(), schoolId.ToString(), new { @id = "schoolId" })
+            @for (int index = 0; index < Model.ToList().Count; index++)
+            {
+                @*@Html.Hidden("[" + index + "].GroupId", Model.ToList()[index].GroupId, new { @id = index + "_GroupId" })*@
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (Model.ToList()[index].Members.Count > 0)
+                {
+                    <div class="form-group">
+                        @Html.Label(Model.ToList()[index].GroupName, htmlAttributes: new { @class = "control-label col-md-2 text-capitalize text-center facility-lable" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => Model.ToList()[index].Members)
+                        </div>
+                    </div>
+                }
+            }
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-10">
+                    <input type="button" value="Save" class="btn btn-default" onclick="PostData();" />
+                </div>
+            </div>
+        </div>
+    }
+
+</fieldset>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        var itemCount =@Model.ToList().Count;
+        $(document).ready(function () {
+            itemCount =@Model.ToList().Count;
+            $("input[type='number']").each(function (i, el) {
+                if(el.value=="")
+                {
+                    el.value=0;
+                }
+            });
+        });
+        function toggleCheckboxState(chkEle)
+        {
+            //debugger
+            if(chkEle)
+            {
+                var chkBox=document.getElementById(chkEle);
+                if(chkBox.hasAttribute('checked'))
+                {
+                    chkBox.removeAttribute('checked');
+                    chkBox.value="0";
+                }
+                else
+                {
+                    chkBox.setAttribute('checked','checked');
+                    chkBox.value="1";
+                }
+
+            }
+        }
+
+        function PostData()
+        {
+            var facilityGroupMembersList=[];
+            var facilityGroupMember ={};
+            var form = $("#configureFacilitiesForm");
+            for(i=0;i<=itemCount;i++)
+            {
+                //var groupId= $("#"+i+"_GroupId").val();
+
+                $("input[id^='"+i+"_']").each(function (i, el) {
+                    //It'll be an array of elements
+                    if(el.dataset)
+                    {
+                        facilityGroupMember.GroupId = el.dataset.groupid;
+                        facilityGroupMember.SchoolId = el.dataset.schoolid;
+                        facilityGroupMember.Name= el.dataset.name;
+                        facilityGroupMember.Id= el.dataset.memberid;
+                        facilityGroupMember.Options = el.value;
+                        facilityGroupMember.GUID= el.dataset.guid;
+                        facilityGroupMember.Type= el.dataset.type;
+                        facilityGroupMember.Required= el.dataset.required;
+                        facilityGroupMember.ValueType= el.dataset.valuetype;
+                        facilityGroupMembersList.push(facilityGroupMember);
+                        facilityGroupMember={};
+                    }
+                });
+                $("select[id^='"+i+"_']").each(function (i, el) {
+                    //It'll be an array of elements
+                    facilityGroupMember.GroupId = el.dataset.groupid;
+                    facilityGroupMember.SchoolId = el.dataset.schoolid;
+                    facilityGroupMember.Name= el.dataset.name;
+                    facilityGroupMember.Id= el.dataset.memberid;
+                    facilityGroupMember.Options = el.value;
+                    facilityGroupMember.GUID= el.dataset.guid;
+                    facilityGroupMember.Type= el.dataset.type;
+                    facilityGroupMember.Required= el.dataset.required;
+                    facilityGroupMember.ValueType= el.dataset.valuetype;
+                    facilityGroupMembersList.push(facilityGroupMember);
+                    facilityGroupMember={};
+                });
+
+            }
+
+            $.ajax({
+                url:'@Url.Action("Configure","Facility")',
+                data:{members: facilityGroupMembersList},
+                type:"POST",
+                async:true,
+                success:function(res)
+                {
+
+                },
+                error:function(err,xhr)
+                {
+
+                }
+            });
+        }
+    </script>
+}

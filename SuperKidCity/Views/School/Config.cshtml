@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SuperKidCity.Models.FacilityGroupViewModel>
+
+@{
+    ViewBag.Title = "Configure Facilities";
+    Layout = "~/Views/Shared/_SchoolLayout.cshtml";
+}
+
+<br />
+<fieldset>
+    <legend class="text-capitalize text-center center-block">
+        <h4 class="text-capitalize text-center">
+            <i class="glyphicon glyphicon-cog"></i>  @ViewBag.Title
+        </h4>
+    </legend>
+
+    @foreach (var item in Model)
+    {
+        <fieldset>
+            <legend>
+                @item.GroupName
+            </legend>
+            @Html.EditorFor(m=> item.Members)
+        </fieldset>
+    }
+</fieldset>
+

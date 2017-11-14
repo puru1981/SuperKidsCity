@@ -1,0 +1,16 @@
+﻿@model List<SuperKidCity.Models.StateViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (string.IsNullOrEmpty(ViewBag.Msg))
+{
+    <p class="text-capitalize text-center text-success">Data Seeded Successfully</p>
+
+}
+else
+{
+    <p class="text-capitalize text-center text-danger">@ViewBag.Msg</p>
+}
+

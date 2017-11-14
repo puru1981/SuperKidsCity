@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Admin-SKC";
+}
+
+<br />
+<br />
+<fieldset>
+    <legend>
+        <h2 class="text text-capitalize text-center">Administration</h2>
+    </legend>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Schools
+                </div>
+                <div class="panel-body">
+                    @Html.Action("Index", "School", new { area = "api" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Facility Groups
+                </div>
+                <div class="panel-body">
+                    @Html.Action("Index", "FacilityGroup", new { area = "api" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Facility Group Members
+                </div>
+                <div class="panel-body">
+                    @Html.Action("Index", "FacilityGroupMember", new { area = "api" })
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+

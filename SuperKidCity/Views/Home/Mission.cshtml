@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Mission";
+    Layout = ViewBag.Layout;
+    string headerCssClass = "";
+    string textCssClass = "";
+    string legengBorder = "";
+
+    if (string.IsNullOrEmpty(Layout))
+    {
+        headerCssClass = "text-mission-header";
+        textCssClass = " text-mission";
+        legengBorder = "border-bottom:1px solid #6b3737;";
+    }
+}
+<br />
+<fieldset>
+    <legend class="text text-capitalize text-center" style="@legengBorder">
+        <h2 class="text text-capitalize @headerCssClass">
+            Mission
+        </h2>
+    </legend>
+    <p class="text text-capitalize text-center">
+        <section class="text text-left @textCssClass">
+            Our mission is to provide technology-enabled, simple-to-operate real time system in the hands of parents of small children. As we continue to hear the news of small kids being harassed in school transport or within school premises, it strengthens our resolve to save our kids from such insecurities. With the support of parents, we are sure we can do it.
+        </section>
+
+    </p>
+</fieldset>
+

@@ -1,0 +1,98 @@
+﻿@model SuperKidCity.Models.SchoolViewModel
+@{
+    string uniqueId = Model.GetType().Name;
+}
+<div class="row">
+  
+    <fieldset>
+        <legend class="text text-capitalize" style="color:#fff;">
+            <span>
+                <i class="glyphicon glyphicon-home"></i>
+            </span> School Info
+        </legend>
+        <h5>This info will be visible to user when searched</h5>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label text text-capitalize" for="School_Name">School Name</label>
+                   @Html.TextBoxFor(m => m.Name, new { @class = "form-control text text-capitalize", @name = uniqueId + ".Name", @id = uniqueId + "_Name" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label text text-capitalize" for="School_RegistrationNumber">Registration Number</label>
+                    @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control text text-capitalize", @name = uniqueId + ".RegistrationNumber", @id = uniqueId + "_RegistrationNumber" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label text text-capitalize" for="School_EstablishedAt">Establishment: (MM-YY)</label>
+                    @Html.TextBoxFor(m => m.EstablishedAt, new { @class = "form-control text text-capitalize", @type = "date", @name = uniqueId + ".EstablishedAt", @id = uniqueId + "_EstablishedAt" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label text text-capitalize" for="School_ShortBio">Short Description</label>
+                    @Html.TextAreaFor(m => m.ShortBio, new { @class = "form-control text text-capitalize", @name = uniqueId + ".EstablishedAt", @id = uniqueId + "_EstablishedAt" })
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label text text-capitalize" for="School_Url">Website</label>
+                    @Html.TextBoxFor(m => m.Url, new { @class = "form-control text text-capitalize", @type = "url", @name = uniqueId + ".EstablishedAt", @id = uniqueId + "_EstablishedAt" })
+                </div>
+            </div>
+
+
+        </div>
+
+    </fieldset>
+    <div class="col-md-6">
+        <fieldset>
+            <legend>
+                <span>
+                    <i class="glyphicon glyphicon-home"></i>
+                </span> Address
+            </legend>
+
+            @Html.EditorFor(m => Model.Address)
+        </fieldset>
+    </div>
+   
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <fieldset>
+            <legend class="text text-capitalize">
+                <span>
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>   Principal
+            </legend>
+
+            @Html.EditorFor(m => Model.Principal)
+        </fieldset>
+    </div>
+
+    <div class="col-md-6">
+        <fieldset>
+            <legend class="text text-capitalize">
+                <span>
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>  Contact Person
+            </legend>
+
+            @Html.EditorFor(m => Model.ContactPerson)
+        </fieldset>
+    </div>
+</div>
+
+
+
+

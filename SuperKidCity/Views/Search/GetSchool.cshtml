@@ -1,0 +1,206 @@
+﻿@model IEnumerable<SuperKidCity.Models.SchoolViewModel>
+
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string Salutation = "Mr.";
+}
+<div class="text text-capitalize text-center center-block">
+    <h2 class="text text-capitalize">
+        <span>
+            <i class="glyphicon glyphicon-list"></i>
+        </span>@ViewBag.Title.
+    </h2>
+
+</div>
+@if (ViewBag.Success)
+{
+    <div class="alert alert-info alert-dismissable">
+        <p class="text text-success">@ViewBag.Msg</p>
+    </div>
+    
+    <div class="jumbotron">
+        @foreach (var item in Model.ToList())
+        {
+            <fieldset>
+                <legend class="text-capitalize text-left">
+
+                    <span>
+                        <i class="glyphicon glyphicon-barcode" title="@item.RegistrationNumber"></i>
+                    </span>  @item.Name
+                </legend>
+
+                <div class="panel-body">
+
+                    @if (item.Address != null && !string.IsNullOrEmpty(item.Address.StreeetAddress2))
+                    {
+                        <div class="row">
+                            <div class="col-md-2">
+                                <fieldset>
+                                    <legend class="text-capitalize text-left">
+                                        <span>
+                                            <i class="glyphicon glyphicon-flag"></i>
+                                        </span>  Established
+                                    </legend>
+                                    <div>
+                                        <span style="font-size:xx-large; font:400">
+                                            @item.EstablishedAt.ToString("MMM")
+                                        </span>
+                                        <span style="font-size:larger;color:darkblue; font:600">
+                                            @item.EstablishedAt.ToString("yyyy")
+                                        </span>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-4">
+                                <fieldset>
+                                    <legend class="text-capitalize text-left">
+                                        <span>
+                                            <i class="glyphicon glyphicon-home"></i>
+                                        </span>  Address
+                                    </legend>
+                                    <address>
+                                        @item.Address.StreetAddress, @item.Address.StreeetAddress2
+                                        <br />
+                                        @item.Address.Locality - @item.Address.District <br /> [@item.Address.State]
+                                    </address>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset>
+                                    <legend class="text-capitalize text-left">
+                                        <span>
+                                            <i class="glyphicon glyphicon-user"></i>
+                                        </span>  Principal
+                                    </legend>
+                                    @if (item.Principal != null && !string.IsNullOrEmpty(item.Principal.Name))
+                                    {
+                                        Salutation = item.Principal.Gender == SKC.Lib.Core.Models.Gender.Male ? "Mr." : "Mrs";
+                                        <address>
+                                            @Salutation @item.Principal.Name <br />
+                                            <email title="Email Address">
+                                                <span>
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span> @item.Principal.Contact.Email
+                                            </email>  <br />
+                                            <phone title="Phone Number">
+                                                <span>
+                                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                                </span>  @item.Principal.Contact.Number
+                                            </phone>
+                                        </address>
+                                    }
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset>
+                                    <legend class="text-capitalize text-left">
+                                        <span>
+                                            <i class="glyphicon glyphicon-phone"></i>
+                                        </span>  Contact Info
+                                    </legend>
+                                    @if (item.ContactPerson != null && !string.IsNullOrEmpty(item.ContactPerson.Name))
+                                    {
+                                        Salutation = item.ContactPerson.Gender == SKC.Lib.Core.Models.Gender.Male ? "Mr." : "Mrs";
+                                        <address>
+                                            @Salutation @item.ContactPerson.Name <br />
+                                            <email title="Email Address">
+                                                <span>
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span> @item.ContactPerson.Contact.Email
+                                            </email>  <br />
+                                            <phone title="Phone Number">
+                                                <span>
+                                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                                </span>  @item.ContactPerson.Contact.Number
+                                            </phone>
+                                        </address>
+                                    }
+                                </fieldset>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </fieldset>
+        }
+
+    </div>
+}
+else
+{
+    <div class="alert alert-danger alert-dismissable">
+        <p class="text text-danger">@ViewBag.Msg</p>
+    </div>
+
+}
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstablishedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortBio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstablishedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortBio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Settings";
+    Layout = this.User.IsInRole("School") ? "~/Views/Shared/_SchoolLayout.cshtml" : "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<br />
+<br />
+<style>
+    .circle {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: red;
+    }
+</style>
+<fieldset>
+    <legend class="text-capitalize">
+        Manage/Add Settings
+    </legend>
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="card-title">Cam Settings</h3>
+                        <p class="card-text">Manage Cam/Live Streaming Settings</p>
+                        @Html.Action("Cam", "Setting")
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="card-title">RFID Settings</h3>
+                        <p class="card-text">Manage RFID Feeder Settings</p>
+                        @Html.Action("RFID", "Setting")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Live Streaming - User View
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <video autoplay id="video"></video>
+                        <button id="startbutton">Go Live</button>
+                    </div>
+                    <div class="panel-footer">
+                        <div id="circle_user_view" class="circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Live Streaming - Viewer View
+                        </div>
+
+                    </div>
+                    <div class="panel-body" id="viewerCanvas2">
+                        <canvas id="canvas" class="hidden"></canvas>
+                        <div class="output">
+                            <img id="photo" alt="The screen capture will appear in this box.">
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div id="circle_viewer_view" class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @*<audio id="audioSource"></audio>*@
+        @*<input type="file" accept="image/*;capture=camera">
+            <input type="file" accept="video/*;capture=camcorder">
+            <input type="file" accept="audio/*;capture=microphone">*@
+        @*<div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h3 class="card-title">SMS Settings</h3>
+                            <p class="card-text">Manage Cam/Live Streaming Settings</p>
+                            @Html.ActionLink("Cam", "Setting", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h3 class="card-title">Special title treatment</h3>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</fieldset>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/signalr")*@
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/streamer.js"></script>
+    <script type="text/javascript">
+        function SubmitData(settingId) {
+            alert(settingId);
+            alert($("#settingsForm_" + settingId).serialize());
+        }
+
+        var imgData;
+        var canvas;
+        var viewerCanvas;
+        var imgObj;
+        var controlId;
+        $(document).ready(function () {
+            var videoElement = document.querySelector('video');
+            var audioSelect = document.querySelector('select#audioSource');
+            var videoSelect = document.querySelector('select#videoSource');
+            var streamer = $.connection.liveStreamHub;
+            $.connection.hub.qs = { "username": '@User.Identity.Name', "clientIp": '@Request.UserHostAddress', "currentUrl": '@Request.RawUrl' };
+            streamer.client.showLive = function (imData) {
+                //canvas = $("#liveCanvas");
+                //   broadcast();
+            }
+
+            streamer.client.setContext = function (contextId, greetingMsg) {
+                canvas = document.getElementById(contextId);
+                controlId = contextId;
+                if (!canvas) {
+                    canvas = document.createElement('canvas');
+                    canvas.setAttribute('id', controlId);
+                    $(canvas).hide();
+                    $("#viewerCanvas").append(canvas);
+
+                    if (canvas) {
+                        // captureCamImage();
+                    }
+                }
+                alert('The live streaming is all set up to be used.\n' + greetingMsg);
+            }
+
+            $.connection.hub.start().done(function () {
+                console.log("Streaming Enabled");
+                streamer.server.greetings();
+            });
+
+            function broadcast() {
+                viewerCanvas = document.getElementById(controlId + "_img");
+                console.log("Called At: " + new Date().getTime());
+                setInterval(function () {
+                    if (!viewerCanvas) {
+                        viewerCanvas = document.createElement('img');
+                        viewerCanvas.setAttribute('id', controlId + "_img");
+                        $("#viewerCanvas").append(viewerCanvas);
+                    }
+                    captureCamImage();
+                    setCanvasImage();
+                }, 100);
+
+            }
+
+            function captureCamImage() {
+                canvas.width = videoElement.videoWidth;
+                canvas.height = videoElement.videoHeight;
+                //canvas.setAttribute('src', imgData);
+                canvas.getContext('2d').drawImage(videoElement, 0, 0);
+                imgData = canvas.toDataURL('img/png');
+                console.log("imgData:" + imgData);
+                //imgData = imgData.replace('data:image/png; base64,', '');
+                streamer.server.postData(JSON.stringify({ 'imgData': '' }));
+            }
+
+            function setCanvasImage() {
+                viewerCanvas.width = videoElement.videoWidth;
+                viewerCanvas.height = videoElement.videoHeight;
+                viewerCanvas.setAttribute('src', canvas.toDataURL('image/png'));
+                //broadcast();
+            }
+
+            function hasGetUserMedia() {
+                return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia || navigator.msGetUserMedia);
+            }
+
+            if (hasGetUserMedia()) {
+                navigator.getUserMedia = navigator.getUserMedia ||
+                navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            } else {
+                alert('getUserMedia() is not supported in your browser');
+            }
+            hasGetUserMedia();
+
+            function gotSources(sourceInfos) {
+                //debugger
+                for (var i = 0; i !== sourceInfos.length; ++i) {
+                    var sourceInfo = sourceInfos[i];
+                    var option = document.createElement('option');
+                    option.value = sourceInfo.deviceId;
+                    if (sourceInfo.kind === 'audiooutput') {
+                        option.text = sourceInfo.label;
+                        if (audioSelect) {
+                            option.text = sourceInfo.label || 'microphone ' +
+                         (audioSelect.length + 1);
+                            audioSelect.appendChild(option);
+                        }
+                    } else if (sourceInfo.kind === 'videoinput') {
+                        option.text = sourceInfo.label;
+                        if (videoSelect) {
+                            option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+                            videoSelect.appendChild(option);
+                        }
+                    } else {
+                        console.log('Some other kind of source: ', sourceInfo);
+                    }
+                }
+            }
+
+            if (typeof MediaStreamTrack === 'undefined' ||
+                typeof MediaStreamTrack.getSources === 'undefined') {
+                alert('This browser does not support MediaStreamTrack.getSources().');
+            } else {
+                navigator.mediaDevices.enumerateDevices().then(function (e) {
+                    gotSources(e)
+                });
+            }
+
+            function successCallback(stream) {
+                window.stream = stream; // make stream available to console
+                videoElement.src = window.URL.createObjectURL(stream);
+                videoElement.play();
+            }
+
+            function errorCallback(error) {
+                console.log('navigator.getUserMedia error: ', error);
+            }
+
+            function start() {
+                if (window.stream) {
+                    videoElement.src = null;
+                    window.stream.getTracks().forEach(function (track) {
+                        track.stop();
+                    })
+                }
+                var audioSource, videoSource;
+                if (audioSelect) {
+                    audioSelect = audioSelect.value;
+                }
+                if (videoSelect) {
+                    videoSelect = videoSelect.value;
+                }
+
+                var constraints = {
+                    audio: {
+                        optional: [{
+                            sourceId: audioSource
+                        }]
+                    },
+                    video: {
+                        optional: [{
+                            sourceId: videoSource
+                        }]
+                    }
+                };
+                navigator.getUserMedia(constraints, successCallback, errorCallback);
+            }
+            if (audioSelect) {
+                audioSelect.onchange = start;
+            }
+            if (videoSelect) {
+                videoSelect.onchange = start;
+            }
+            start();
+
+        });
+    </script>
+}
+
+

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SuperKidCity.Models.LocalityViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<fieldset>
+    <legend class="text-capitalize text-center">
+        Localities - [@ViewBag.City]
+    </legend>
+    <p>
+        @Html.ActionLink("Add New", "Create", new { id = ViewBag.CityId }, new { @class = "btn btn-sm btn-default" })
+    </p>
+    <table class="table table-condensed panel panel-primary">
+        <thead class="panel-heading">
+            <tr>
+                <th class="text-capitalize text-center">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="text-capitalize text-center">
+                    @Html.DisplayNameFor(model => model.District)
+                </th>
+                <th class="text-capitalize text-center">
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody class="panel-body">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-capitalize text-center">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="text-capitalize text-center">
+                        @Html.DisplayFor(modelItem => item.District)
+                    </td>
+
+                    <td class="text-capitalize text-center">
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+
+                    <td class="text-capitalize text-center col-md-4">
+                        @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { Id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+</fieldset>
+
